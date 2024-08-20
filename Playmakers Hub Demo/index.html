@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playmakers Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+</head>
+<body>
+<div id="blur">
+    <header>
+        <nav>
+            <ul class="nav-links">
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Home</a></li>
+                <li><a href="#"><span class="nav-center">Playmakers Hub</span></a></li>
+                <li><a href="#" onclick="toggle()">Booking</a></li>
+                <li><a href="join.html">Join us</a></li>
+            </ul>
+            <a href="login-page.html" class="member-login-btn">Login<span>   ></span></a>
+        </nav>
+    </header>
+    <main>
+        <div>
+            <img src="Playmakers_Logo.png" alt="Playmakers Logo" class="logo">
+            <div class="main">
+                <h1 class="main-text">Exploring Music<br> Within You</h1>
+                <a href="#" class="sub-text">About us -></a>
+            </div>
+        </div>
+    </main>
+</div>
+    <!-- booking popup section -->
+    <div id="popup">
+        <p>Book Event <span><a href="#" class="previous-booking-btn">Previous Booking</a></span></p>
+        <div class="divider"></div>
+        <form>
+            <div class="form-row full-width"> <!-- Title row -->
+                <label for="title">Title</label>
+                <input type="text" name="title" class="input-heading" placeholder="Event Title">
+            </div>
+            <div class="form-row split-row"> <!-- Start and End Date row -->
+                <div class="half-width">
+                    <label for="start-date">Start Date</label>
+                    <input type="date" name="start-date">
+                </div>
+                <div class="half-width">
+                    <label for="end-date">End Date</label>
+                    <input type="date" name="end-date">
+                </div>
+            </div>
+            <div class="form-row full-width"> <!-- Fullname row -->
+                <label for="fullname">Fullname</label>
+                <input type="text" name="fullname" class="input-heading" placeholder="Fullname">
+            </div>
+            <div class="form-row full-width"> <!-- Email row -->
+                <label for="email">Email</label>
+                <input type="email" name="email" placeholder="Email">
+            </div>
+            <div class="form-row full-width"> <!-- Location row -->
+                <label for="location">Location</label>
+                <input type="text" name="location" placeholder="Event Location">
+            </div>
+            <div class="form-row split-row"> <!-- Event Type row -->
+                <div class="quarter-width">
+                    <label for="event-type"></label>
+                    <select name="event-type"> 
+                        <option value="Department">Department</option>
+                        <option value="Organization">Organization</option>
+                    </select>
+                </div>
+                <div class="three-quarter-width">
+                    <input type="text" name="event-type-name" placeholder="Department/Organization Name">
+                </div>
+            </div>
+            <p class="description">Genre: e.g Rock, Pop Music, Rhythm and Blues, Popular Music, Classical Music, Jazz and more. <br>
+                Theme: e.g Unveil the Secrets, Sonatang Inato, Throwback Friday, Love is in the Air</p>
+             
+                <!-- Genre/Theme row -->
+            <div class="form-row split-row"> 
+                <div class="quarter-width">
+                    <label for="genre"></label>
+                    <select name="genre" title="Genre: e.g Rock, Pop Music, Rhythm and Blues, Popular Music, Classical Music, Jazz and more. 
+                        Theme: e.g Unveil the Secrets, Sonatang Inato, Throwback Friday, Love is in the Air"> 
+                        <option value="Genre">Genre</option>
+                        <option value="Theme">Theme</option>
+                    </select>
+                </div>
+                <div class="three-quarter-width">
+                    <input type="text" name="event-type-name" placeholder="Genre/Theme">
+                </div>
+            </div>
+
+            <!-- Roles Row, First Row: Guitarist, Bassist, Drummer -->
+            
+            <div class="form-row split-row-around"> 
+                <div class="quarter-width-box">
+                    <label for="guitarist">No. of Guitarist</label>
+                    <input type="number" min="0" max="99" class="role-input">
+                </div>
+                <div class="quarter-width-box">
+                    <label for="bassist">No. of Vocalist</label>
+                    <input type="number" min="0" max="99" class="role-input">
+                </div>
+                <div class="quarter-width-box">
+                    <label for="drummer">No. of Bassist</label>
+                    <input type="number" min="0" max="99" class="role-input">
+                </div>
+             </div>
+            <!-- Roles Row, Second Row: Keyboardist, Vocalist -->
+            <div class="form-row split-row-around-2nd"> 
+                <div class="quarter-width-box">
+                    <label for="keyboardist">No. of Keyboardist</label>
+                    <input type="number" min="0" max="99" class="role-input">
+                </div>
+                <div class="quarter-width-box">
+                    <label for="vocalist">No. of Percussionist</label>
+                    <input type="number" min="0" max="99" class="role-input">
+                </div>
+            </div> 
+            <!-- Location row -->
+            <div class="form-row full-width"> 
+                <label for="description">Description</label>
+                <textarea name="" id="" cols="30" rows="5" placeholder="We'd like to collaborate with Playmakers on an upcoming intramurals event"></textarea>
+            </div>
+            <div class="form-submit-btn">
+                <input type="submit" value="Submit" id="form-submit">
+            </div>
+        </form>
+        <div class="close-btn">
+            <a href="#" onclick="toggle()" >Close</a>
+        </div>
+    </div>
+    
+    
+
+        <!--Script Section-->
+    <script type="text/javascript">
+        function toggle() {
+            var blur = document.getElementById('blur');
+            blur.classList.toggle('active');
+            var popup = document.getElementById('popup');
+            popup.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

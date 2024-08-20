@@ -1,0 +1,78 @@
+p, h1, label, legend {
+   color: white;
+   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#title {
+   margin-top: 20px;
+   margin-bottom: 20px;
+   font-size: 40px;
+   text-align: center;
+   font-family: "Lexend", sans-serif;
+}
+
+label, legend {
+   font-size: 22px;
+
+}
+
+#name, #email, #number, #dropdown {
+   display: block;
+   margin: 8px 0px;
+   height: 30px;
+   width: 95%;
+   border-radius: 5px;
+   padding: 5px 15px;
+   font-weight: bold;
+}
+
+body {
+   background: radial-gradient(circle at 25% center, #5C1B33, transparent 85%), 
+                radial-gradient(circle at 75% center, #2618A7, transparent 80%);
+    background-color: #000000; 
+    height: 100vh;
+    margin: 0;
+}
+
+fieldset {
+   border: none;
+   margin: 5px 0px;
+}
+
+#survey-form {
+   border: 2px none black;
+   border-radius: 5px;
+   width: 70%;
+   max-width: 500px;
+   margin: auto;
+   background-color: rgba(54, 48, 60, 0.7); 
+   padding: 30px 45px;
+}
+
+#expectations-field {
+   padding: 10px 15px;
+   font-weight: bold;
+   margin: 10px 0px;
+   border-radius: 5px;
+}
+
+#submit {
+   display: block;
+   margin: auto;
+   height: 50px;
+   width: 100%;
+   background-color: rgba(0, 255, 120, 80%);
+   color: white;
+   font-weight: bold;
+   font-size: 18px;
+   border-radius: 5px;
+}
+
+#submit:hover{
+   background-color: rgba(0, 255, 130, 90%);
+}
+
+.block {
+   display: block;
+   font-size: 18px;
+}
