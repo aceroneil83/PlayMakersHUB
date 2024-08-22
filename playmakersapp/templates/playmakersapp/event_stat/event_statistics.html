@@ -1,8 +1,144 @@
-{% extends "playmakersapp/base.html" %} 
+{% extends "playmakersapp/base.html" %}
 
-{% block content %} 
-<div>
-    <h1>Event Statistics</h1>
+{% block content %}
+<div class="min-h-screen p-4 sm:p-6">
+    <div class="mb-6">
+        <h1 class="text-xl sm:text-2xl font-semibold text-gray-700">Event Statistics</h1>
+    </div>
+
+    <!-- Monthly Event Distribution Chart LITSEEE -->
+    <div class="bg-white rounded-lg shadow p-6 sm:p-16 mb-6 w-full max-w-full sm:max-w-2xl h-[300px] sm:h-[400px]">
+        <h2 class="text-md sm:text-lg font-medium mb-4">Monthly Event Distribution Chart</h2>
+        <canvas id="eventDistributionChart"></canvas>
+    </div>
+
+    <!-- Event Statistics and Member Statistics -->
+    <div class="flex flex-wrap gap-6">
+        <!-- Event Statistics -->
+        <div class="bg-white rounded-lg shadow p-6 w-full sm:w-auto ">
+            <h2 class="text-md sm:text-lg font-medium mb-4">Event Statistics</h2>
+            <div class="flex items-center justify-center w-f">
+                <canvas id="eventStatisticsChart" class="h-[200px] sm:h-[250px]"></canvas>
+            </div>
+        </div>
+
+        <!-- Member Statistics Table -->
+        <div class="flex-1 bg-white rounded-lg shadow p-6 w-full">
+            <h2 class="text-md sm:text-lg font-medium mb-4">Member Statistics</h2>
+            <div class="overflow-x-auto">
+                <table class="min-w-full bg-white border">
+                    <thead>
+                        <tr>
+                            <th class="py-2 px-2 sm:px-4 bg-green-100 text-left">DATE</th>
+                            <th class="py-2 px-2 sm:px-4 bg-green-100 text-left">TOTAL PARTICIPATION</th>
+                            <th class="py-2 px-2 sm:px-4 bg-green-100 text-left">STATUS</th>
+                            <th class="py-2 px-2 sm:px-4 bg-green-100 text-left">NAME</th>
+                            <th class="py-2 px-2 sm:px-4 bg-green-100 text-left">MEMBER SINCE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-t">
+                            <td class="py-2 px-2 sm:px-4">June 06 2024</td>
+                            <td class="py-2 px-2 sm:px-4">10</td>
+                            <td class="py-2 px-2 sm:px-4">
+                                <span class="bg-green-200 text-green-800 py-1 px-2 rounded-full text-xs">Active</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-4">Terec, Jie Clark</td>
+                            <td class="py-2 px-2 sm:px-4">Mar 06 2023</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2 px-2 sm:px-4">June 04 2024</td>
+                            <td class="py-2 px-2 sm:px-4">1</td>
+                            <td class="py-2 px-2 sm:px-4">
+                                <span class="bg-yellow-200 text-yellow-800 py-1 px-2 rounded-full text-xs">Inactive</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-4">Rocales, James</td>
+                            <td class="py-2 px-2 sm:px-4">June 16 2023</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2 px-2 sm:px-4">May 19 2024</td>
+                            <td class="py-2 px-2 sm:px-4">0</td>
+                            <td class="py-2 px-2 sm:px-4">
+                                <span class="bg-red-200 text-red-800 py-1 px-2 rounded-full text-xs">Not Active</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-4">Baul, Kate</td>
+                            <td class="py-2 px-2 sm:px-4">Sep 10 2023</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2 px-2 sm:px-4">May 07 2024</td>
+                            <td class="py-2 px-2 sm:px-4">5</td>
+                            <td class="py-2 px-2 sm:px-4">
+                                <span class="bg-green-200 text-green-800 py-1 px-2 rounded-full text-xs">Active</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-4">Acero, Neil Colleen</td>
+                            <td class="py-2 px-2 sm:px-4">Sep 2 2023</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2 px-2 sm:px-4">April 2 2024</td>
+                            <td class="py-2 px-2 sm:px-4">2</td>
+                            <td class="py-2 px-2 sm:px-4">
+                                <span class="bg-yellow-200 text-yellow-800 py-1 px-2 rounded-full text-xs">Inactive</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-4">Pangan, Neil Angelo</td>
+                            <td class="py-2 px-2 sm:px-4">Oct 7 2023</td>
+                        </tr>
+                        <tr class="border-t">
+                            <td class="py-2 px-2 sm:px-4">March 9 2024</td>
+                            <td class="py-2 px-2 sm:px-4">1</td>
+                            <td class="py-2 px-2 sm:px-4">
+                                <span class="bg-yellow-200 text-yellow-800 py-1 px-2 rounded-full text-xs">Inactive</span>
+                            </td>
+                            <td class="py-2 px-2 sm:px-4">Doe, John</td>
+                            <td class="py-2 px-2 sm:px-4">Oct 14 2023</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex justify-center mt-4">
+                <ul class="flex">
+                    <li class="mr-2"><a href="#" class="px-2 py-1 bg-gray-200 rounded">1</a></li>
+                    <li class="mr-2"><a href="#" class="px-2 py-1 bg-white border rounded">2</a></li>
+                    <li class="mr-2"><a href="#" class="px-2 py-1 bg-white border rounded">...</a></li>
+                    <li class="mr-2"><a href="#" class="px-2 py-1 bg-white border rounded">10</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
 
+<!-- Include Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    // Event Distribution Chart
+    const eventDistributionCtx = document.getElementById('eventDistributionChart').getContext('2d');
+    const eventDistributionData = {{ event_distribution_data|safe }};
+    const eventDistributionChart = new Chart(eventDistributionCtx, {
+        type: 'bar',
+        data: eventDistributionData,
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Monthly Event Distribution'
+            }
+        }
+    });
+
+    // Event Statistics Chart
+    const eventStatisticsCtx = document.getElementById('eventStatisticsChart').getContext('2d');
+    const eventStatisticsData = {{ event_statistics_data|safe }};
+    const eventStatisticsChart = new Chart(eventStatisticsCtx, {
+        type: 'doughnut',
+        data: eventStatisticsData,
+        options: {
+            responsive: true,
+            title: {
+                display: true,
+                text: 'Event Statistics'
+            }
+        }
+    });
+</script>
 {% endblock %}
