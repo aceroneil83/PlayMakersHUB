@@ -1,0 +1,65 @@
+<div id="sidebar" class="bg-white w-72 p-4 shadow-lg lg:block hidden">
+    <div class="text-center flex flex-row items-center gap-3 justify-center mb-3">
+        <img src="https://i.ibb.co/4KZnDYS/PLAYMAKERS-Logo.png" alt="Playmakers Logo" width='80'>
+        <h1 class='font-bold text-[#5C1B33] text-lg'>Playmakers</h1>
+    </div>
+    <ul class="space-y-2">
+        <li class="{% if request.resolver_match.url_name == 'dashboard' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'dashboard' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'dashboard' %}icon-white{% else %}icon-default{% endif %}">dashboard</span>
+                <span>Dashboard</span>
+            </a>
+        </li>
+        <li class="{% if request.resolver_match.url_name == 'events_management' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'events_management' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'events_management' %}icon-white{% else %}icon-default{% endif %}">event</span>
+                <span>Events Management</span>
+            </a>
+        </li>
+       <li class="{% if request.resolver_match.url_name == 'member_organization' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+    <a href="{% url 'member_organization' %}" class="flex items-center space-x-2 px-4 py-3">
+        <span class="material-icons {% if request.resolver_match.url_name == 'member_organization' %}icon-white{% else %}icon-default{% endif %}">people</span>
+        <span>Member Organization</span>
+    </a>
+</li>
+
+        <li class="{% if request.resolver_match.url_name == 'event_statistics' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'event_statistics' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'event_statistics' %}icon-white{% else %}icon-default{% endif %}">bar_chart</span>
+                <span>Event Statistics</span>
+            </a>
+        </li>
+        {% comment %}
+        <li class="{% if request.resolver_match.url_name == 'messages' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'messages' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'messages' %}icon-white{% else %}icon-default{% endif %}">message</span>
+                <span>Messages</span>
+            </a>
+        </li>
+         <li class="{% if request.resolver_match.url_name == 'help_support' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'help_support' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'help_support' %}icon-white{% else %}icon-default{% endif %}">help</span>
+                <span>Help & Support</span>
+            </a>
+        </li> 
+        <li class="{% if request.resolver_match.url_name == 'profile' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'profile' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'profile' %}icon-white{% else %}icon-default{% endif %}">person</span>
+                <span>Profile</span>
+            </a>
+        </li>
+        <li class="{% if request.resolver_match.url_name == 'settings' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'settings' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'settings' %}icon-white{% else %}icon-default{% endif %}">settings</span>
+                <span>Settings</span>
+            </a>
+        </li>
+        {% endcomment %}
+        <li class="{% if request.resolver_match.url_name == 'logout' %}bg-[#5C1B33] text-white{% else %}text-gray-800 hover:bg-gray-200{% endif %} rounded-lg">
+            <a href="{% url 'logout' %}" class="flex items-center space-x-2 px-4 py-3">
+                <span class="material-icons {% if request.resolver_match.url_name == 'logout' %}icon-white{% else %}icon-default{% endif %}">logout</span>
+                <span>Log Out</span>
+            </a>
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,112 @@
+{% comment %} <script src="{% static 'js/dashboard.js' %} "></script> 
+<script src="{% static 'js/event_management.js' %} "></script>  {% endcomment %}
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <title>
+        {% block head_title %}Playmakers Admin{% endblock %}
+    </title>
+    {% tailwind_css %}
+
+    <!-- HTMX -->
+    <script src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous"></script>
+
+    <!-- Custom files -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    
+    {% block extra_head %}
+    {% endblock %}
+
+    
+</head>
+
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        {% include 'playmakersapp/navigation/sidebar.html' %}
+        {% block content %}
+        {% endblock %}
+    </div>
+    <script>
+    function setActiveNavItem(event) {
+      event.preventDefault();
+      // Remove active class and bg-red-500 from all nav items
+      const navItems = document.querySelectorAll(".nav-item");
+      navItems.forEach((item) => {
+        item.classList.remove("active", "border-b-[2px]", "border-[#5C1B33]");
+      });
+
+      // Hide all content sections
+      const contentSections = document.querySelectorAll(".content-section");
+      contentSections.forEach((section) => section.classList.add("hidden"));
+
+      // Add active class and bg-red-500 to the parent li of the clicked nav item
+      const target = event.target.closest("li");
+      target.classList.add("active",  "border-b-[2px]", "border-[#5C1B33]", "test");
+
+      // Show the corresponding content section
+      const contentId = target.getAttribute("data-target");
+      document.getElementById(contentId).classList.remove("hidden");
+    }
+
+    function toggleDropdown(event) {
+      event.preventDefault();
+      const dropdownMenu = event.target.closest("button").nextElementSibling;
+      dropdownMenu.classList.toggle("hidden");
+    }
+
+    // Close dropdowns if clicked outside
+    window.onclick = function (event) {
+      if (
+        !event.target.matches(".dropdown-menu") &&
+        !event.target.matches(".dropdown-menu *") &&
+        !event.target.matches("button")
+      ) {
+        const dropdowns = document.querySelectorAll(".dropdown-menu");
+        dropdowns.forEach((dropdown) => {
+          if (!dropdown.classList.contains("hidden")) {
+            dropdown.classList.add("hidden");
+          }
+        });
+      }
+    };
+
+    // Add event listeners to nav items
+    document.querySelectorAll(".nav-item button").forEach((button) => {
+      button.addEventListener("click", setActiveNavItem);
+    });
+
+    // Add event listeners to dropdown items
+    document.querySelectorAll(".dropdown-menu button").forEach((button) => {
+      button.addEventListener("click", setActiveNavItem);
+    });
+
+    function toggleSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      sidebar.classList.toggle("hidden");
+    }
+
+    function showSection(sectionId) {
+      const sections = document.querySelectorAll(".content-section");
+      sections.forEach((section) => {
+        section.classList.add("hidden");
+      });
+      document.getElementById(sectionId).classList.remove("hidden");
+
+      const buttons = document.querySelectorAll(".nav-button");
+      buttons.forEach((button) => {
+        button.classList.remove("active");
+      });
+      document.getElementById(`btn-${sectionId}`).classList.add("active");
+    }
+    </script>
+</body>
+</html>

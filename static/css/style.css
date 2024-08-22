@@ -1,0 +1,11 @@
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.icon-default {
+  color: #4b4b4c; /* Default icon color */
+}
+
+.icon-white {
+  color: white; /* Icon color for active state */
+}
