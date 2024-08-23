@@ -1,26 +1,33 @@
 {% extends "playmakersapp/base.html" %}
 
 {% block content %}
-<div class="min-h-screen p-4 sm:p-6">
-    <div class="mb-6">
-        <h1 class="text-xl sm:text-2xl font-semibold text-gray-700">Event Statistics</h1>
-    </div>
+<div class="p-6">
+    <!-- Burger Menu -->
+  <div class="lg:hidden mb-5">
+    <button class="text-gray-800" onclick="toggleSidebar()">
+      <span class="material-icons">menu</span>
+    </button>
+  </div>
 
-    <!-- Monthly Event Distribution Chart LITSEEE -->
-    <div class="bg-white rounded-lg shadow p-6 sm:p-16 mb-6 w-full max-w-full sm:max-w-2xl h-[300px] sm:h-[400px]">
+  <div class="flex justify-between items-center mb-5">
+    <div class="bg-white w-full flex justify-end rounded-lg p-4">
+      <div class="flex flex-row gap-3">
+        <span class="material-icons">notifications</span>
+        <span class="material-icons">account_circle</span>
+      </div>
+    </div>
+  </div>
+    
+    <h1 class="text-3xl font-semibold text-gray-800 mb-6">Event Statistics</h1>
+
+
+    
+    <div class='flex items-cente gap-4'>
+<!-- Monthly Event Distribution Chart LITSEEE -->
+    <div class="bg-white rounded-lg lg:p-4 shadow  mb-6 w-full max-w-full sm:max-w-2xl h-[300px] lg:h-[400px]">
         <h2 class="text-md sm:text-lg font-medium mb-4">Monthly Event Distribution Chart</h2>
         <canvas id="eventDistributionChart"></canvas>
     </div>
-
-    <!-- Event Statistics and Member Statistics -->
-    <div class="flex flex-wrap gap-6">
-        <!-- Event Statistics -->
-        <div class="bg-white rounded-lg shadow p-6 w-full sm:w-auto ">
-            <h2 class="text-md sm:text-lg font-medium mb-4">Event Statistics</h2>
-            <div class="flex items-center justify-center w-f">
-                <canvas id="eventStatisticsChart" class="h-[200px] sm:h-[250px]"></canvas>
-            </div>
-        </div>
 
         <!-- Member Statistics Table -->
         <div class="flex-1 bg-white rounded-lg shadow p-6 w-full">
@@ -96,7 +103,7 @@
             </div>
 
             <!-- Pagination -->
-            <div class="flex justify-center mt-4">
+            <div class="flex justify-start mt-4">
                 <ul class="flex">
                     <li class="mr-2"><a href="#" class="px-2 py-1 bg-gray-200 rounded">1</a></li>
                     <li class="mr-2"><a href="#" class="px-2 py-1 bg-white border rounded">2</a></li>
@@ -106,6 +113,18 @@
             </div>
         </div>
     </div>
+
+    <!-- Event Statistics and Member Statistics -->
+  
+        <!-- Event Statistics -->
+        <div class="bg-white rounded-lg shadow p-6 lg:w-72">
+            <h2 class="text-md sm:text-lg font-medium mb-4">Event Statistics</h2>
+            <div class="flex items-center justify-center">
+                <canvas id="eventStatisticsChart"></canvas>
+            </div>
+        </div>
+
+   
 </div>
 
 <!-- Include Chart.js -->

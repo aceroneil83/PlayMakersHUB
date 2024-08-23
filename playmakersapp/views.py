@@ -30,7 +30,7 @@ def logout(request):
 
 
 def event_statistics(request):
-    # Example data for charts (replace with your actual data)
+    # dummy data ni
     event_distribution_data = {
         "labels": ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
         "datasets": [

@@ -264,7 +264,7 @@
         <!--create event, pending button-->
         <div class="mt-4">
           <button
-            onclick="toggleDropdown(event)"
+            onclick="openModal()"
             class="bg-[#5C1B33] text-white px-6 py-2 rounded-lg w-full"
           >
             View Details
@@ -274,6 +274,11 @@
       <!-- Additional pending event cards can be added here -->
     </div>
   </div>
+
+   <!-- Event Details Modal -->
+  {% include "playmakersapp/components/event_modal.html" %}
+    <!-- published events--> 
+
   <div id="published-events" class="content-section hidden">
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <div class="border rounded-lg p-6 bg-white shadow-lg">
@@ -512,4 +517,14 @@
     </div>
   </div>
 </div>
+
+<script>
+  function openModal() {
+    document.getElementById('eventDetailsModal').classList.remove('hidden');
+  }
+
+  function closeModal() {
+    document.getElementById('eventDetailsModal').classList.add('hidden');
+  }
+</script>
 {% endblock %}
