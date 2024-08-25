@@ -1,0 +1,277 @@
+<div id="pending-events" class="content-section">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for event in pending_events %}
+        <div class="border rounded-lg p-6 bg-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-2">{{ event.title }}</h2>
+            <div class="flex items-center justify-between space-x-4 mb-4">
+                <div>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.organizer }}</p>
+                    <p class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold">{{ event.email }}</p>
+                </div>
+                <div>
+                    <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">{{ event.department }}</p>
+                </div>
+            </div>
+            <div class="border-t-[1px] py-3">
+                <h2 class="font-semibold text-[#4B4B4C]">{{ event.location }}</h2>
+                <div>
+                    <p class="text-sm font-semibold text-[#5C1B33]">{{ event.genre }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4">
+                <div>
+                    <p class="text-[#4B4B4C]">Event Start</p>
+                    <p class="font-semibold text-gray-800">{{ event.start_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.start_time }}</p>
+                </div>
+                <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
+                <div>
+                    <p class="text-[#4B4B4C]">Event End</p>
+                    <p class="font-semibold text-gray-800">{{ event.end_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.end_time }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4 mt-4">
+                <button class="bg-gray-300 text-white px-4 py-2 rounded-lg">Create Event</button>
+                <div class="relative inline-block text-left">
+                    <button onclick="toggleDropdown(event)" class="bg-orange-500 text-white px-4 py-2 rounded-lg inline-flex items-center">
+                        Pending
+                        <svg class="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
+                        <div class="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Accept</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" role="menuitem">Reject</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="past-events" class="content-section hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for event in past_events %}
+        <div class="border rounded-lg p-6 bg-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-2">{{ event.title }}</h2>
+            <div class="flex items-center justify-between space-x-4 mb-4">
+                <div>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.organizer }}</p>
+                    <p class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold">{{ event.email }}</p>
+                </div>
+                <div>
+                    <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">{{ event.department }}</p>
+                </div>
+            </div>
+            <div class="border-t-[1px] py-3">
+                <h2 class="font-semibold text-[#4B4B4C]">{{ event.location }}</h2>
+                <div>
+                    <p class="text-sm font-semibold text-[#5C1B33]">{{ event.genre }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4">
+                <div>
+                    <p class="text-[#4B4B4C]">Event Start</p>
+                    <p class="font-semibold text-gray-800">{{ event.start_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.start_time }}</p>
+                </div>
+                <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
+                <div>
+                    <p class="text-[#4B4B4C]">Event End</p>
+                    <p class="font-semibold text-gray-800">{{ event.end_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.end_time }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button onclick="openModal()" class="bg-[#5C1B33] text-white px-6 py-2 rounded-lg w-full">View Details</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="published-events" class="content-section hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for event in published_events %}
+        <div class="border rounded-lg p-6 bg-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-2">{{ event.title }}</h2>
+            <div class="flex items-center justify-between space-x-4 mb-4">
+                <div>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.organizer }}</p>
+                    <p class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold">{{ event.email }}</p>
+                </div>
+                <div>
+                    <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">{{ event.department }}</p>
+                </div>
+            </div>
+            <div class="border-t-[1px] py-3">
+                <h2 class="font-semibold text-[#4B4B4C]">{{ event.location }}</h2>
+                <div>
+                    <p class="text-sm font-semibold text-[#5C1B33]">{{ event.genre }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4">
+                <div>
+                    <p class="text-[#4B4B4C]">Event Start</p>
+                    <p class="font-semibold text-gray-800">{{ event.start_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.start_time }}</p>
+                </div>
+                <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
+                <div>
+                    <p class="text-[#4B4B4C]">Event End</p>
+                    <p class="font-semibold text-gray-800">{{ event.end_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.end_time }}</p>
+                </div>
+            </div>
+            <div class="flex flex-row mt-5 gap-3 items-center">
+                <p class="font-semibold">Participants:</p>
+                <div class="bg-[#FBEBF1] px-3 py-1 rounded-lg">
+                    <p class="font-semibold text-[#40B267]">{{ event.participants }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button onclick="toggleDropdown(event)" class="bg-[#5C1B33] text-white px-6 py-2 rounded-lg w-full">View on Playmakers hub</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="rejected-events" class="content-section hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for event in rejected_events %}
+        <div class="border rounded-lg p-6 bg-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-2">{{ event.title }}</h2>
+            <div class="flex items-center justify-between space-x-4 mb-4">
+                <div>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.organizer }}</p>
+                    <p class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold">{{ event.email }}</p>
+                </div>
+                <div>
+                    <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">{{ event.department }}</p>
+                </div>
+            </div>
+            <div class="border-t-[1px] py-3">
+                <h2 class="font-semibold text-[#4B4B4C]">{{ event.location }}</h2>
+                <div>
+                    <p class="text-sm font-semibold text-[#5C1B33]">{{ event.genre }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4">
+                <div>
+                    <p class="text-[#4B4B4C]">Event Start</p>
+                    <p class="font-semibold text-gray-800">{{ event.start_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.start_time }}</p>
+                </div>
+                <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
+                <div>
+                    <p class="text-[#4B4B4C]">Event End</p>
+                    <p class="font-semibold text-gray-800">{{ event.end_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.end_time }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button onclick="toggleDropdown(event)" class="bg-[#F44E3F] text-white px-6 py-2 rounded-lg w-full">Rejected</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="approved-events" class="content-section hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for event in approved_events %}
+        <div class="border rounded-lg p-6 bg-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-2">{{ event.title }}</h2>
+            <div class="flex items-center justify-between space-x-4 mb-4">
+                <div>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.organizer }}</p>
+                    <p class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold">{{ event.email }}</p>
+                </div>
+                <div>
+                    <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">{{ event.department }}</p>
+                </div>
+            </div>
+            <div class="border-t-[1px] py-3">
+                <h2 class="font-semibold text-[#4B4B4C]">{{ event.location }}</h2>
+                <div>
+                    <p class="text-sm font-semibold text-[#5C1B33]">{{ event.genre }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4">
+                <div>
+                    <p class="text-[#4B4B4C]">Event Start</p>
+                    <p class="font-semibold text-gray-800">{{ event.start_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.start_time }}</p>
+                </div>
+                <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
+                <div>
+                    <p class="text-[#4B4B4C]">Event End</p>
+                    <p class="font-semibold text-gray-800">{{ event.end_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.end_time }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4 mt-4">
+                <button class="bg-[#5C1B33] text-white px-4 py-2 rounded-lg">Create Event</button>
+                <button onclick="toggleDropdown(event)" class="bg-[#40B267] text-white px-6 py-2 rounded-lg inline-flex items-center">
+                    Accepted
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div id="ongoing-events" class="content-section hidden">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {% for event in ongoing_events %}
+        <div class="border rounded-lg p-6 bg-white shadow-lg">
+            <h2 class="text-xl font-semibold mb-2">{{ event.title }}</h2>
+            <div class="flex items-center justify-between space-x-4 mb-4">
+                <div>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.organizer }}</p>
+                    <p class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold">{{ event.email }}</p>
+                </div>
+                <div>
+                    <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">{{ event.department }}</p>
+                </div>
+            </div>
+            <div class="border-t-[1px] py-3">
+                <h2 class="font-semibold text-[#4B4B4C]">{{ event.location }}</h2>
+                <div>
+                    <p class="text-sm font-semibold text-[#5C1B33]">{{ event.genre }}</p>
+                </div>
+            </div>
+            <div class="flex items-center justify-between space-x-4">
+                <div>
+                    <p class="text-[#4B4B4C]">Event Start</p>
+                    <p class="font-semibold text-gray-800">{{ event.start_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.start_time }}</p>
+                </div>
+                <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
+                <div>
+                    <p class="text-[#4B4B4C]">Event End</p>
+                    <p class="font-semibold text-gray-800">{{ event.end_date }}</p>
+                    <p class="text-[#4B4B4C] font-semibold">{{ event.end_time }}</p>
+                </div>
+            </div>
+            <div class="flex flex-row mt-5 gap-3 items-center">
+                <p class="font-semibold">Participants:</p>
+                <div class="bg-[#FBEBF1] px-3 py-1 rounded-lg">
+                    <p class="font-semibold text-[#40B267]">{{ event.participants }}</p>
+                </div>
+            </div>
+            <div class="mt-4">
+                <button onclick="toggleDropdown(event)" class="bg-[rgba(108,106,118,0.50)] disabled text-white px-6 py-2 rounded-lg w-full">Publish</button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Event Details Modal -->
+{% include "playmakersapp/components/event_modal.html" %}

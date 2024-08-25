@@ -1,4 +1,5 @@
-{% extends "playmakersapp/base.html" %} {% block content %}
+{% extends "playmakersapp/base.html" %} 
+{% block content %}
 <!-- Main Content -->
 <div class="flex-1 p-6 bg-[#FBEBF1]">
   <!-- Burger Menu -->
@@ -16,506 +17,57 @@
       </div>
     </div>
   </div>
+  
   <h1 class="text-3xl font-semibold text-gray-800 mb-6">Event Management</h1>
-  <!-- Navigation-->
+  
+  <!-- Navigation -->
   <div class="mb-5">
     <!-- Horizontal Navigation for large screens -->
-    <ul
-      class="hidden lg:inline-flex bg-white mx-auto px-5 rounded-lg space-x-6 overflow-x-auto lg:overflow-hidden py-5"
-    >
+    <ul class="hidden lg:inline-flex bg-white mx-auto px-5 rounded-lg space-x-6 overflow-x-auto lg:overflow-hidden py-5">
       <li class="nav-item" id="nav-pending-events" data-target="pending-events">
         <button class="text-gray-800 font-semibold">Pending Events</button>
       </li>
       <li class="nav-item" id="nav-past-events" data-target="past-events">
         <button class="text-gray-800 font-semibold">Past Events</button>
       </li>
-      <li
-        class="nav-item"
-        id="nav-published-events"
-        data-target="published-events"
-      >
+      <li class="nav-item" id="nav-published-events" data-target="published-events">
         <button class="text-gray-800 font-semibold">Published Events</button>
       </li>
-      <li
-        class="nav-item"
-        id="nav-rejected-events"
-        data-target="rejected-events"
-      >
+      <li class="nav-item" id="nav-rejected-events" data-target="rejected-events">
         <button class="text-gray-800 font-semibold">Rejected Events</button>
       </li>
-      <li
-        class="nav-item"
-        id="nav-approved-events"
-        data-target="approved-events"
-      >
+      <li class="nav-item" id="nav-approved-events" data-target="approved-events">
         <button class="text-gray-800 font-semibold">Approved Events</button>
       </li>
       <li class="nav-item" id="nav-ongoing-events" data-target="ongoing-events">
         <button class="text-gray-800 font-semibold">Ongoing Events</button>
       </li>
     </ul>
+
     <!-- Dropdown Navigation for small screens -->
     <div class="relative lg:hidden">
-      <button
-        onclick="toggleDropdown(event)"
-        class="bg-white text-gray-800 font-semibold w-full rounded-lg py-2 px-4 flex justify-between items-center"
-      >
+      <button onclick="toggleDropdown(event)" class="bg-white text-gray-800 font-semibold w-full rounded-lg py-2 px-4 flex justify-between items-center">
         <span>Filter Events</span>
-        <svg
-          class="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M19 9l-7 7-7-7"
-          ></path>
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
         </svg>
       </button>
-      <div
-        id="dropdownMenu"
-        class="dropdown-menu origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden"
-      >
+      <div id="dropdownMenu" class="dropdown-menu origin-top-right absolute right-0 mt-2 w-full rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden">
         <div class="py-1">
-          <button
-            class="block px-4 py-2 text-sm text-gray-700"
-            data-target="pending-events"
-          >
-            Pending Events
-          </button>
-          <button
-            class="block px-4 py-2 text-sm text-gray-700"
-            data-target="past-events"
-          >
-            Past Events
-          </button>
-          <button
-            class="block px-4 py-2 text-sm text-gray-700"
-            data-target="published-events"
-          >
-            Published Events
-          </button>
-          <button
-            class="block px-4 py-2 text-sm text-gray-700"
-            data-target="rejected-events"
-          >
-            Rejected Events
-          </button>
-          <button
-            class="block px-4 py-2 text-sm text-gray-700"
-            data-target="approved-events"
-          >
-            Approved Events
-          </button>
-          <button
-            class="block px-4 py-2 text-sm text-gray-700"
-            data-target="ongoing-events"
-          >
-            Ongoing Events
-          </button>
+          <button class="block px-4 py-2 text-sm text-gray-700" data-target="pending-events">Pending Events</button>
+          <button class="block px-4 py-2 text-sm text-gray-700" data-target="past-events">Past Events</button>
+          <button class="block px-4 py-2 text-sm text-gray-700" data-target="published-events">Published Events</button>
+          <button class="block px-4 py-2 text-sm text-gray-700" data-target="rejected-events">Rejected Events</button>
+          <button class="block px-4 py-2 text-sm text-gray-700" data-target="approved-events">Approved Events</button>
+          <button class="block px-4 py-2 text-sm text-gray-700" data-target="ongoing-events">Ongoing Events</button>
         </div>
       </div>
     </div>
   </div>
+  
   <!-- Content Sections -->
-  <div id="pending-events" class="content-section">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="border rounded-lg p-6 bg-white shadow-lg">
-        <h2 class="text-xl font-semibold mb-2">CITC Intramurals</h2>
-        <div class="flex items-center justify-between space-x-4 mb-4">
-          <div>
-            <p class="text-[#4B4B4C] font-semibold">John Doe</p>
-            <p
-              class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold"
-            >
-              johndoe@example.com
-            </p>
-          </div>
-          <!--department-->
-          <div>
-            <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">
-              CITC
-            </p>
-          </div>
-        </div>
-        <!--location and other details-->
-        <div class="border-t-[1px] py-3">
-          <h2 class="font-semibold text-[#4B4B4C]">USTP Cafeteria</h2>
-          <div>
-            <p class="text-sm font-semibold text-[#5C1B33]">Pop rock</p>
-            <span></span>
-          </div>
-        </div>
-        <!--date started and end-->
-        <div class="flex items-center justify-between space-x-4">
-          <div>
-            <p class="text-[#4B4B4C]">Event Start</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">10:00 AM</p>
-          </div>
-          <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
-          <div>
-            <p class="text-[#4B4B4C]">Event End</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">5:00 PM</p>
-          </div>
-        </div>
-        <!--create event, pending button-->
-        <div class="flex items-center justify-between space-x-4 mt-4">
-          <button class="bg-gray-300 text-white px-4 py-2 rounded-lg">
-            Create Event
-          </button>
-          <div class="relative inline-block text-left">
-            <button
-              onclick="toggleDropdown(event)"
-              class="bg-orange-500 text-white px-4 py-2 rounded-lg inline-flex items-center"
-            >
-              Pending
-              <svg
-                class="ml-2 w-4 h-4"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                ></path>
-              </svg>
-            </button>
-            <div
-              class="dropdown-menu origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden"
-            >
-              <div
-                class="py-1"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="options-menu"
-              >
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem"
-                  >Accept</a
-                >
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                  role="menuitem"
-                  >Reject</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Additional pending event cards can be added here -->
-    </div>
-  </div>
-  <div id="past-events" class="content-section hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="border rounded-lg p-6 bg-white shadow-lg">
-        <h2 class="text-xl font-semibold mb-2">CITC Intramurals</h2>
-        <div class="flex items-center justify-between space-x-4 mb-4">
-          <div>
-            <p class="text-[#4B4B4C] font-semibold">John Doe</p>
-            <p
-              class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold"
-            >
-              johndoe@example.com
-            </p>
-          </div>
-          <!--department-->
-          <div>
-            <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">
-              CITC
-            </p>
-          </div>
-        </div>
-        <!--location and other details-->
-        <div class="border-t-[1px] py-3">
-          <h2 class="font-semibold text-[#4B4B4C]">USTP Cafeteria</h2>
-          <div>
-            <p class="text-sm font-semibold text-[#5C1B33]">Pop rock</p>
-            <span></span>
-          </div>
-        </div>
-        <!--date started and end-->
-        <div class="flex items-center justify-between space-x-4">
-          <div>
-            <p class="text-[#4B4B4C]">Event Start</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">10:00 AM</p>
-          </div>
-          <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
-          <div>
-            <p class="text-[#4B4B4C]">Event End</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">5:00 PM</p>
-          </div>
-        </div>
-        <!--create event, pending button-->
-        <div class="mt-4">
-          <button
-            onclick="openModal()"
-            class="bg-[#5C1B33] text-white px-6 py-2 rounded-lg w-full"
-          >
-            View Details
-          </button>
-        </div>
-      </div>
-      <!-- Additional pending event cards can be added here -->
-    </div>
-  </div>
-
-   <!-- Event Details Modal -->
-  {% include "playmakersapp/components/event_modal.html" %}
-    <!-- published events--> 
-
-  <div id="published-events" class="content-section hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="border rounded-lg p-6 bg-white shadow-lg">
-        <h2 class="text-xl font-semibold mb-2">CITC Intramurals</h2>
-        <div class="flex items-center justify-between space-x-4 mb-4">
-          <div>
-            <p class="text-[#4B4B4C] font-semibold">John Doe</p>
-            <p
-              class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold"
-            >
-              johndoe@example.com
-            </p>
-          </div>
-          <!--department-->
-          <div>
-            <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">
-              CITC
-            </p>
-          </div>
-        </div>
-        <!--location and other details-->
-        <div class="border-t-[1px] py-3">
-          <h2 class="font-semibold text-[#4B4B4C]">USTP Cafeteria</h2>
-          <div>
-            <p class="text-sm font-semibold text-[#5C1B33]">Pop rock</p>
-            <span></span>
-          </div>
-        </div>
-        <!--date started and end-->
-        <div class="flex items-center justify-between space-x-4">
-          <div>
-            <p class="text-[#4B4B4C]">Event Start</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">10:00 AM</p>
-          </div>
-          <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
-          <div>
-            <p class="text-[#4B4B4C]">Event End</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">5:00 PM</p>
-          </div>
-        </div>
-        <!--participants -->
-        <div class="flex flex-row mt-5 gap-3 items-center">
-          <p class="font-semibold">Participants:</p>
-          <div class="bg-[#FBEBF1] px-3 py-1 rounded-lg">
-            <p class="font-semibold text-[#40B267]">5/5</p>
-          </div>
-        </div>
-        <!--create event, pending button-->
-        <div class="mt-4">
-          <button
-            onclick="toggleDropdown(event)"
-            class="bg-[#5C1B33] text-white px-6 py-2 rounded-lg w-full"
-          >
-            View on Playmakers hub
-          </button>
-        </div>
-      </div>
-      <!-- Additional pending event cards can be added here -->
-    </div>
-  </div>
-  <div id="rejected-events" class="content-section hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="border rounded-lg p-6 bg-white shadow-lg">
-        <h2 class="text-xl font-semibold mb-2">CITC Intramurals</h2>
-        <div class="flex items-center justify-between space-x-4 mb-4">
-          <div>
-            <p class="text-[#4B4B4C] font-semibold">John Doe</p>
-            <p
-              class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold"
-            >
-              johndoe@example.com
-            </p>
-          </div>
-          <!--department-->
-          <div>
-            <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">
-              CITC
-            </p>
-          </div>
-        </div>
-        <!--location and other details-->
-        <div class="border-t-[1px] py-3">
-          <h2 class="font-semibold text-[#4B4B4C]">USTP Cafeteria</h2>
-          <div>
-            <p class="text-sm font-semibold text-[#5C1B33]">Pop rock</p>
-            <span></span>
-          </div>
-        </div>
-        <!--date started and end-->
-        <div class="flex items-center justify-between space-x-4">
-          <div>
-            <p class="text-[#4B4B4C]">Event Start</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">10:00 AM</p>
-          </div>
-          <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
-          <div>
-            <p class="text-[#4B4B4C]">Event End</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">5:00 PM</p>
-          </div>
-        </div>
-        <!--create event, pending button-->
-        <div class="mt-4">
-          <button
-            onclick="toggleDropdown(event)"
-            class="bg-[#F44E3F] text-white px-6 py-2 rounded-lg w-full"
-          >
-            Rejected
-          </button>
-        </div>
-      </div>
-      <!-- Additional pending event cards can be added here -->
-    </div>
-  </div>
-  <div id="approved-events" class="content-section hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="border rounded-lg p-6 bg-white shadow-lg">
-        <h2 class="text-xl font-semibold mb-2">CITC Intramurals</h2>
-        <div class="flex items-center justify-between space-x-4 mb-4">
-          <div>
-            <p class="text-[#4B4B4C] font-semibold">John Doe</p>
-            <p
-              class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold"
-            >
-              johndoe@example.com
-            </p>
-          </div>
-          <!--department-->
-          <div>
-            <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">
-              CITC
-            </p>
-          </div>
-        </div>
-        <!--location and other details-->
-        <div class="border-t-[1px] py-3">
-          <h2 class="font-semibold text-[#4B4B4C]">USTP Cafeteria</h2>
-          <div>
-            <p class="text-sm font-semibold text-[#5C1B33]">Pop rock</p>
-            <span></span>
-          </div>
-        </div>
-        <!--date started and end-->
-        <div class="flex items-center justify-between space-x-4">
-          <div>
-            <p class="text-[#4B4B4C]">Event Start</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">10:00 AM</p>
-          </div>
-          <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
-          <div>
-            <p class="text-[#4B4B4C]">Event End</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">5:00 PM</p>
-          </div>
-        </div>
-        <!--create event, pending button-->
-        <div class="flex items-center justify-between space-x-4 mt-4">
-          <button class="bg-[#5C1B33] text-white px-4 py-2 rounded-lg">
-            Create Event
-          </button>
-          <button
-            onclick="toggleDropdown(event)"
-            class="bg-[#40B267] text-white px-6 py-2 rounded-lg inline-flex items-center"
-          >
-            Accepted
-          </button>
-        </div>
-      </div>
-      <!-- Additional pending event cards can be added here -->
-    </div>
-  </div>
-  <div id="ongoing-events" class="content-section hidden">
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-      <div class="border rounded-lg p-6 bg-white shadow-lg">
-        <h2 class="text-xl font-semibold mb-2">CITC Intramurals</h2>
-        <div class="flex items-center justify-between space-x-4 mb-4">
-          <div>
-            <p class="text-[#4B4B4C] font-semibold">John Doe</p>
-            <p
-              class="text-[rgba(75,75,76,0.5)] text-sm underline font-semibold"
-            >
-              johndoe@example.com
-            </p>
-          </div>
-          <!--department-->
-          <div>
-            <p class="bg-[#FBEBF1] font-semibold text-sm px-5 py-1 rounded-2xl">
-              CITC
-            </p>
-          </div>
-        </div>
-        <!--location and other details-->
-        <div class="border-t-[1px] py-3">
-          <h2 class="font-semibold text-[#4B4B4C]">USTP Cafeteria</h2>
-          <div>
-            <p class="text-sm font-semibold text-[#5C1B33]">Pop rock</p>
-            <span></span>
-          </div>
-        </div>
-        <!--date started and end-->
-        <div class="flex items-center justify-between space-x-4">
-          <div>
-            <p class="text-[#4B4B4C]">Event Start</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">10:00 AM</p>
-          </div>
-          <div class="border-t h-px flex-grow my-auto bg-gray-300"></div>
-          <div>
-            <p class="text-[#4B4B4C]">Event End</p>
-            <p class="font-semibold text-gray-800">June 06, 2024</p>
-            <p class="text-[#4B4B4C] font-semibold">5:00 PM</p>
-          </div>
-        </div>
-        <!--participants -->
-        <div class="flex flex-row mt-5 gap-3 items-center">
-          <p class="font-semibold">Participants:</p>
-          <div class="bg-[#FBEBF1] px-3 py-1 rounded-lg">
-            <p class="font-semibold text-[#40B267]">0/10</p>
-          </div>
-        </div>
-        <!--create event, pending button-->
-        <div class="mt-4">
-          <button
-            onclick="toggleDropdown(event)"
-            class="bg-[rgba(108,106,118,0.50)] disabled text-white px-6 py-2 rounded-lg w-full"
-          >
-            Publish
-          </button>
-        </div>
-      </div>
-      <!-- Additional pending event cards can be added here -->
-    </div>
-  </div>
+  {% include "playmakersapp/event_management/event_sections.html" %}
+  
 </div>
 
 <script>

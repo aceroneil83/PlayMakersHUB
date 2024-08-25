@@ -1,7 +1,72 @@
 {% extends "playmakersapp/base.html" %}
 
 {% block content %}
-<div>
-    <h1>member organization</h1>
+<!-- Main Content -->
+<div class="flex-1 p-6 bg-[#FBEBF1]">
+  <!-- Burger Menu -->
+  <div class="lg:hidden mb-5">
+    <button class="text-gray-800" onclick="toggleSidebar()">
+      <span class="material-icons">menu</span>
+    </button>
+  </div>
+
+  <div class="flex justify-between items-center mb-5">
+    <div class="bg-white w-full flex justify-end rounded-lg p-4">
+      <div class="flex flex-row gap-3">
+        <span class="material-icons">notifications</span>
+        <span class="material-icons">account_circle</span>
+      </div>
+    </div>
+  </div>
+
+  <h1 class="text-3xl font-semibold text-gray-800 mb-6">Member Organization</h1>
+
+  <!-- Scrollable Members Grid -->
+  <div class="overflow-y-auto" style="max-height: calc(100vh - 200px);">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {% for member in members %}
+      <div class="border rounded-lg p-6 bg-white shadow-lg">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center">
+            <img src="{{ member.image_url }}" alt="{{ member.name }}" class="w-12 h-12 rounded-full border-2 border-white shadow-md">
+            <div class="ml-3">
+              <h2 class="text-lg font-semibold text-gray-800">{{ member.name }}</h2>
+              <p class="text-sm text-gray-500">{{ member.email }}</p>
+            </div>
+          </div>
+          <span class="bg-purple-200 text-purple-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">{{ member.id }}</span>
+        </div>
+        <div class="mb-4">
+          <span class="text-sm font-semibold text-gray-600">Role:</span>
+          <div class='flex items-center gap-3'>
+              <div class='w-3 h-3 rounded-full bg-[#5C1B33]'></div>
+              <p class='font-medium text-[#5C1B33]' >{{ member.role }}</p>
+          </div>
+        </div>
+        <div class="mb-4">
+          <span class="text-sm font-semibold text-gray-800">Genre:</span>
+          <p>{{ member.genre }}</p>
+        </div>
+        <div class="mb-4">
+          <span class="text-sm font-semibold text-gray-800">Mobile No:</span>
+          <p>{{ member.mobile_no }}</p>
+        </div>
+        <div class="mb-4">
+          <span class="text-sm font-semibold text-gray-800">Total Events Participated:</span>
+          <p>{{ member.total_events_participated }}</p>
+        </div>
+        <div class="mb-4">
+          <span class="text-sm font-semibold text-gray-800">Join Date:</span>
+          <p>{{ member.join_date }}</p>
+        </div>
+        <div class="mt-4">
+          <button class="bg-[#5C1B33] text-white px-6 py-2 rounded-lg w-full">
+            Edit Details
+          </button>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>
-{% endblock  %}
+{% endblock %}
