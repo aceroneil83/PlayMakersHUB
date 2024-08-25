@@ -8,4 +8,6 @@ urlpatterns = [
     path('event-statistics/', views.event_statistics, name='event_statistics'),
     path('messages/', views.messages, name='messages'),
     path('logout/', views.logout, name='logout'),
+    path('playmakersadmin/', views.login, name='login'),
+
 ]

@@ -29,9 +29,13 @@
 
 <body class="bg-gray-100">
     <div class="flex h-screen bg-[#FBEBF1]">
-        {% include 'playmakersapp/navigation/sidebar.html' %}
-        {% block content %}
-        {% endblock %}
+         {% if not request.path == '/playmakersadmin/' %}
+            {% include 'playmakersapp/navigation/sidebar.html' %}
+        {% endif %}
+        <div class="flex-1">
+            {% block content %}
+            {% endblock %}
+        </div>
     </div>
     <script>
     function setActiveNavItem(event) {

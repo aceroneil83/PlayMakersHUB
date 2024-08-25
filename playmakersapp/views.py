@@ -3,6 +3,9 @@ from django.shortcuts import render
 def dashboard(request):
     return render(request, 'playmakersapp/index.html')
 
+def login(request):
+    return render(request, 'playmakersapp/auth/playmakersadmin.html')
+
 def events_management(request):
     pending_events = [
         {
